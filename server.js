@@ -1,19 +1,16 @@
 const express = require('express');
 const ejs = require('ejs');
-const config = require('./config')
-const expressLayouts = require('express-ejs-layouts');
-
+const config = require('./config');
 
 const app = express();
 
-app.use(express.static("public"))
+app.use(express.static("public"));
 
 app.set('view engine', 'ejs');
 
-app.use(expressLayouts);
 
 app.get('/', (req, res) => {
-    res.render("map");
+    res.render("index", { apiKey: config.apiKey });
 })
 
 app.listen(config.port, () => {

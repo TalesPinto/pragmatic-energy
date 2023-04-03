@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/client.js"></script>
+</head>
+<body>
+
+    <section class="left-sidebar">
+        <section>spotlight</section>
+        <section>stats</section>
+        <section>latest prices</section>
+        <section>
+            <h2>About</h2>
+            <h3>Team name: Pragmatic Programmers</h3>
+            <ul>
+                <li><a href="https://github.com/Akman13">Akram</a></li>
+                <li><a href="https://github.com/DeepaliPatro">Deepali</a></li>
+                <li><a href="https://github.com/TalesPinto">Tales</a></li>
+                <li><a href="https://github.com/BigBBazz">Tom</a></li>
+            </ul>
+            <footer>&copy; 2023 Pragmatic Programmers</footer>
+        </section>
+    </section>
+    <main id="map">main map</main>
+    <section class="right-sidebar">
+        <section>date</section>
+        <section>map center location</section>
+        <section>nearest</section>
+    </section>
+
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&callback=initMap">
+    </script>
+    
+</body>
+</html>
