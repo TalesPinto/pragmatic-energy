@@ -1,6 +1,10 @@
-Akram: I have placed some template headers below
+# Team: Pragmatic Energy
 
 # Collaborators
+- Akram 
+- Deepali Patro
+- Tales
+- Tom
 
 # Features
 
@@ -8,4 +12,8 @@ Akram: I have placed some template headers below
 
 # Future implementations
 
-Tales test
+# Full stack app built using
+- HTML
+- CSS
+- Javascript (Node Js and Express JS)
+- PostgreSQL
