@@ -7,13 +7,13 @@ for (let station of stations) {
    if (station.includes('"')) {
       const [objectId,featureType,description,stationClass,fid,name,operationalStatus,owner,industryId,address,suburb,state,spatialConfidence,revised,comment1, comment2,latitude,longitude] = station.split(",");
 
-      const sql = `INSERT INTO petrol_stations (id, name, owner, address, suburb, state, latitude, longitude) values ($1, $2, $3, $4, $5, $6, $7, $8) returning id;`
-      db.query(sql, [objectId, name, owner, address, suburb, state, latitude, longitude]).then(res => console.log(res.rows[0]))
+      const sql = `INSERT INTO petrol_stations (name, owner, address, suburb, state, latitude, longitude) values ($1, $2, $3, $4, $5, $6, $7) returning id;`
+      db.query(sql, [name, owner, address, suburb, state, latitude, longitude]).then(res => console.log(res.rows[0]))
 
    } else {
       const [objectId,featureType,description,stationClass,fid,name,operationalStatus,owner,industryId,address,suburb,state,spatialConfidence,revised,comment,latitude,longitude] = station.split(",");
 
-      const sql = `INSERT INTO petrol_stations (id, name, owner, address, suburb, state, latitude, longitude) values ($1, $2, $3, $4, $5, $6, $7, $8) returning id;`
-      db.query(sql, [objectId, name, owner, address, suburb, state, latitude, longitude]).then(res => console.log(res.rows[0]))
+      const sql = `INSERT INTO petrol_stations (name, owner, address, suburb, state, latitude, longitude) values ($1, $2, $3, $4, $5, $6, $7) returning id;`
+      db.query(sql, [name, owner, address, suburb, state, latitude, longitude]).then(res => console.log(res.rows[0]))
    }
 }
