@@ -28,7 +28,9 @@
     </section>
     <main id="map">main map</main>
     <section class="right-sidebar">
-        <section>date</section>
+        <section>
+            <p class="clock"></p>
+        </section>
         <section>
             <h2>map center location</h2>
             <p id="center-lat"></p>
@@ -40,7 +42,10 @@
     <script async
     src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&callback=initMap">
     </script>
+
+    <script type="module" src="/components/clock.js"></script>
+
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-    
+
 </body>
 </html>
