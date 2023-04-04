@@ -5,7 +5,7 @@ function updateClock() {
     const day = weekday[date.getDay()];
     const time = date.toLocaleTimeString('en-US', { hours12: true });
 
-    document.querySelector('.clock').innerHTML = day + time;
+    document.querySelector('.clock h2').innerHTML = day + ' ' + time;
 }
 
 setInterval(updateClock, 1000)
