@@ -28,11 +28,26 @@ async function initMap() {
 
             const myLatLng = { lat: station.latitude, lng: station.longitude };
     
-            new google.maps.Marker({
+            const marker = new google.maps.Marker({
                 position: myLatLng,
                 map,
                 title: station.name,
             });
+
+            const contentString = `<div><h3>${station.name}</h3> <p>${station.address}</p></div>`
+
+            const infowindow = new google.maps.InfoWindow({
+                content: contentString,
+                ariaLabel: station.name,
+            });
+
+            marker.addListener("click", () => {
+                infowindow.open({
+                  anchor: marker,
+                  map,
+                });  
+            });
+     
         };
     });
     
