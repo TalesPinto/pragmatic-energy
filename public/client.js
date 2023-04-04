@@ -35,53 +35,64 @@ async function initMap() {
         // ariaLabel: station.name,
     });
 
-    axios.get("/api/stations/all").then(stations => {
+    map.addListener('idle', () => {
+        // When the map is idle, the map box's boundaries are extracted
+        const { lo: lowerLat, hi: upperLat } = map.getBounds().Va;
+        const { lo: lowerLng, hi: upperLng } = map.getBounds().Ga;
 
-        for (const station of stations.data) {
+        // An API axios request is made to retrieve the stations within the coordinate boundaries set by the map box
+        const queryString = `?lowerlat=${lowerLat}&upperlat=${upperLat}&lowerlng=${lowerLng}&upperlng=${upperLng}`
+        axios.get(`/api/stations/bounds${queryString}`).then(stations => {
 
-            const myLatLng = { lat: station.latitude, lng: station.longitude };
-            
-            const image = {
-                url: icons[station.owner] || icons.Generic,
-                scaledSize: new google.maps.Size(25, 25),
-                origin: new google.maps.Point(0,0), // origin
-                anchor: new google.maps.Point(0, 0) // anchor
+            for (const station of stations.data) {
+    
+                const myLatLng = { lat: station.latitude, lng: station.longitude };
+                
+                const image = {
+                    url: icons[station.owner] || icons.Generic,
+                    scaledSize: new google.maps.Size(25, 25),
+                    origin: new google.maps.Point(0,0), // origin
+                    anchor: new google.maps.Point(0, 0) // anchor
+                };
+    
+                const marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map,
+                    title: station.name,
+                    // label: station.name,
+                    icon: image
+                });
+    
+                const contentString = `<div><h3>${station.name}</h3> <p>${station.address}</p></div>`
+    
+                marker.addListener("click", () => {
+                    infoWindow.close()
+                    infoWindow.setContent(contentString)
+                    infoWindow.open({
+                      anchor: marker,
+                      map,
+                    });  
+                });
+    
+                marker.addListener("mouseover", () => {
+                    marker.label = station.name
+                })
+                // marker.addListener('mouseover', function() {
+                //     infoWindow.setContent(`<h3>${station.name}</h3>`)
+                //     infoWindow.open({
+                //       anchor: marker,
+                //       map,
+                //     }); 
+                // });
+                // marker.addListener('mouseout', function() {
+                //     infoWindow.close();
+                // });
             };
+        });
 
-            const marker = new google.maps.Marker({
-                position: myLatLng,
-                map,
-                title: station.name,
-                // label: station.name,
-                icon: image
-            });
+    })
+    
 
-            const contentString = `<div><h3>${station.name}</h3> <p>${station.address}</p></div>`
-
-            marker.addListener("click", () => {
-                infoWindow.close()
-                infoWindow.setContent(contentString)
-                infoWindow.open({
-                  anchor: marker,
-                  map,
-                });  
-            });
-
-            marker.addListener("mouseover", () => {
-                marker.label = station.name
-            })
-            // marker.addListener('mouseover', function() {
-            //     infoWindow.setContent(`<h3>${station.name}</h3>`)
-            //     infoWindow.open({
-            //       anchor: marker,
-            //       map,
-            //     }); 
-            // });
-            // marker.addListener('mouseout', function() {
-            //     infoWindow.close();
-            // });
-        };
-    });
 }
 
 
