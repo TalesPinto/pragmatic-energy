@@ -1,3 +1,11 @@
+const icons = {
+    Ampol: "/images/ampol.jpeg",
+    BP: "/images/bp.png",
+    Caltex: "/images/caltex.png",
+    Shell: "/images/shell.png",
+    '7-Eleven Pty Ltd': "/images/seven-eleven.png",
+    Generic: "/images/generic.jpg",
+}
 let map;
 
 async function initMap() {
@@ -32,12 +40,20 @@ async function initMap() {
         for (const station of stations.data) {
 
             const myLatLng = { lat: station.latitude, lng: station.longitude };
-    
+            
+            const image = {
+                url: icons[station.owner] || icons.Generic,
+                scaledSize: new google.maps.Size(25, 25),
+                origin: new google.maps.Point(0,0), // origin
+                anchor: new google.maps.Point(0, 0) // anchor
+            };
+
             const marker = new google.maps.Marker({
                 position: myLatLng,
                 map,
                 title: station.name,
                 // label: station.name,
+                icon: image
             });
 
             const contentString = `<div><h3>${station.name}</h3> <p>${station.address}</p></div>`
@@ -51,25 +67,21 @@ async function initMap() {
                 });  
             });
 
-            // marker.addListener("mouseover", () => {
-            //     marker.label = station.name
-            // })
-            marker.addListener('mouseover', function() {
-                infoWindow.setContent(`<h3>${station.name}</h3>`)
-                infoWindow.open({
-                  anchor: marker,
-                  map,
-                }); 
-            });
-            marker.addListener('mouseout', function() {
-                infoWindow.close();
-            });
-     
+            marker.addListener("mouseover", () => {
+                marker.label = station.name
+            })
+            // marker.addListener('mouseover', function() {
+            //     infoWindow.setContent(`<h3>${station.name}</h3>`)
+            //     infoWindow.open({
+            //       anchor: marker,
+            //       map,
+            //     }); 
+            // });
+            // marker.addListener('mouseout', function() {
+            //     infoWindow.close();
+            // });
         };
     });
-    
-
- 
 }
 
 
