@@ -22,6 +22,11 @@ async function initMap() {
         document.getElementById('center-lng').innerHTML = 'lng: ' + longitude
     });
 
+    const infoWindow = new google.maps.InfoWindow({
+        // content: contentString,
+        // ariaLabel: station.name,
+    });
+
     axios.get("/api/stations/all").then(stations => {
 
         for (const station of stations.data) {
@@ -32,20 +37,32 @@ async function initMap() {
                 position: myLatLng,
                 map,
                 title: station.name,
+                // label: station.name,
             });
 
             const contentString = `<div><h3>${station.name}</h3> <p>${station.address}</p></div>`
 
-            const infowindow = new google.maps.InfoWindow({
-                content: contentString,
-                ariaLabel: station.name,
-            });
-
             marker.addListener("click", () => {
-                infowindow.open({
+                infoWindow.close()
+                infoWindow.setContent(contentString)
+                infoWindow.open({
                   anchor: marker,
                   map,
                 });  
+            });
+
+            // marker.addListener("mouseover", () => {
+            //     marker.label = station.name
+            // })
+            marker.addListener('mouseover', function() {
+                infoWindow.setContent(`<h3>${station.name}</h3>`)
+                infoWindow.open({
+                  anchor: marker,
+                  map,
+                }); 
+            });
+            marker.addListener('mouseout', function() {
+                infoWindow.close();
             });
      
         };
