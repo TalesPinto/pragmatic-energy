@@ -14,7 +14,7 @@ router.get("/all", (req,res) => {
 
 router.get('/bounds', (req, res) => {
 
-    const [lowerLat, upperLat, lowerLng, upperLng] = [Number(req.query.lowerlat), Number(req.query.upperlat), Number(req.query.lowerlng), Number(req.query.upperlng)]
+    const [lowerLat, upperLat, lowerLng, upperLng] = [req.query.lowerlat, req.query.upperlat, req.query.lowerlng, req.query.upperlng]
 
     const sql = 'SELECT * FROM petrol_stations WHERE latitude BETWEEN $1 and $2 AND longitude BETWEEN $3 and $4;'
     
