@@ -21,6 +21,23 @@ async function initMap() {
         document.getElementById('center-lat').innerHTML = 'lat: ' + latitude
         document.getElementById('center-lng').innerHTML = 'lng: ' + longitude
     });
+
+    axios.get("/api/stations/all").then(stations => {
+
+        for (const station of stations.data) {
+
+            const myLatLng = { lat: station.latitude, lng: station.longitude };
+    
+            new google.maps.Marker({
+                position: myLatLng,
+                map,
+                title: station.name,
+            });
+        };
+    });
+    
+
+ 
 }
 
 
