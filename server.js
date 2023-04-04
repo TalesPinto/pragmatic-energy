@@ -6,6 +6,7 @@ const ownersController = require("./controllers/owners_controller")
 
 const app = express();
 
+app.use(express.json())
 app.use(express.static("public"));
 app.use("/api/owners", ownersController)
 app.use("/api/stations", stationsController)
