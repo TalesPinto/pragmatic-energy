@@ -3,6 +3,7 @@ const ejs = require('ejs');
 const config = require('./config');
 const stationsController = require("./controllers/stations_controller")
 const ownersController = require("./controllers/owners_controller")
+const latestPricesController = require("./controllers/latest_prices_controller")
 
 const app = express();
 
@@ -10,12 +11,11 @@ app.use(express.json())
 app.use(express.static("public"));
 app.use("/api/owners", ownersController)
 app.use("/api/stations", stationsController)
+app.use("/api/latest", latestPricesController)
 app.set('view engine', 'ejs');
 
 
 app.get('/', (req, res) => {
-
-
     res.render("index", { apiKey: config.apiKey });
 })
 
