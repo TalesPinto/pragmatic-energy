@@ -12,7 +12,23 @@
 
     <section class="left-sidebar">
         <section>spotlight</section>
-        <section>stats</section>
+        <section>
+            <h2>Stats</h2>
+            <h3>Total Stations: 5244</h3>
+            <h3>Total Owners: 32</h3>
+            <table>
+                <tr>
+                    <th>Caltex</th>
+                    <th>1502</th>
+                </tr>
+                <tr>
+                    <th>BP</th>
+                    <th>1230</th>
+                </tr>
+            </table>
+
+
+        </section>
         <section>latest prices</section>
         <section>
             <h2>About</h2>
@@ -28,7 +44,9 @@
     </section>
     <main id="map">main map</main>
     <section class="right-sidebar">
-        <section>date</section>
+        <section>
+            <p class="clock"></p>
+        </section>
         <section>
             <h2>map center location</h2>
             <p id="center-lat"></p>
@@ -40,6 +58,6 @@
     <script async
     src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&callback=initMap">
     </script>
-    
+    <script src="/components/clock.js"></script>
 </body>
 </html>
