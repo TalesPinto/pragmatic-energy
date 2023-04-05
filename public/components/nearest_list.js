@@ -1,11 +1,11 @@
 const parentList = document.querySelector('.nearest-section ul');
 
-axios.get('/api/stations/all')
-    .then(res => {
-        const stations = res.data.slice(0, 10);
-        renderStationList(stations);
-    })
-    ;
+// axios.get('/api/stations/all')
+//     .then(res => {
+//         const stations = res.data.slice(0, 10);
+//         renderStationList(stations);
+//     })
+//     ;
 
 
 function renderStationList(stations) {
@@ -37,3 +37,5 @@ function renderStation(station) {
                     </li> 
     `
 }
+
+//module.exports = renderStationList
