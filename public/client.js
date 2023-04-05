@@ -6,6 +6,7 @@ const icons = {
     '7-Eleven Pty Ltd': "/images/seven-eleven.png",
     Generic: "/images/generic.jpg",
 }
+
 let map;
 
 async function initMap() {

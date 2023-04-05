@@ -1,5 +1,8 @@
-const parentTag = document.querySelector('.spotlight-section main');
+// import {initMap} from "../client.js"
 
+const parentTag = document.querySelector('.spotlight-section main');
+const refresh = document.querySelector('.refresh')
+// const spotlightStation = document.querySelector('.spotlight-station')
 axios.get('/api/stations/random')
     .then(res => {
 
@@ -23,12 +26,29 @@ function renderStation(station) {
     }
 
     return `
-            <img src='#' alt="">
             <div>
-                <p>${station.name}</p>
+                <p class="spotlight-station"><a href="">${station.name}</a></p>
                 <p>${station.address}</p>
             </div>
+            <img src='${icons[station.owner] || icons.Generic}' alt="">
         `
 }
 
-// ${icons[station.owner] || icons.Generic}
+refresh.addEventListener('click', handleRefresh)
+
+function handleRefresh(event) {
+    event.preventDefault()
+    if(!event.target.classList.contains('refresh')) return
+    console.log(event.target.classList);
+    axios.get('/api/stations/random')
+        .then(res => {
+
+            const allStations = res.data
+            const randomStationNumber = _.random(0, allStations.length - 1)
+            const randomStationObj = res.data[randomStationNumber]
+
+            parentTag.innerHTML = renderStation(randomStationObj)
+        });
+
+}
+
