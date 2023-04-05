@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 const db = require("../db");
-var _ = require('underscore');
+const _ = require('underscore');
 
 router.get("/all", (req, res) => {
 
