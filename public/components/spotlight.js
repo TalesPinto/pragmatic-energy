@@ -6,11 +6,8 @@ const refresh = document.querySelector('.refresh')
 axios.get('/api/stations/random')
     .then(res => {
 
-        const allStations = res.data
-        const randomStationNumber = _.random(0, allStations.length - 1)
-        const randomStationObj = res.data[randomStationNumber]
-
-        parentTag.innerHTML = renderStation(randomStationObj)
+        const spotlight = res.data
+        parentTag.innerHTML = renderStation(spotlight)
 
     });
 

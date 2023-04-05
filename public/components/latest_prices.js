@@ -6,7 +6,7 @@ axios.get('/api/latest/prices')
         latestPrices.innerHTML = renderLatest(latest)
         // console.log(latest);
     })
-;
+    ;
 
 const barrelImageUrl = "https://atlas-content-cdn.pixelsquid.com/stock-images/crude-oil-barrel-drum-Od6VAL2-600.jpg"
 

@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const router = Router();
 const db = require("../db");
+var _ = require('underscore');
 
 router.get("/all", (req, res) => {
 
@@ -11,12 +12,12 @@ router.get("/all", (req, res) => {
         ;
 })
 
-router.get('/random', (req, res) => {
+router.get("/random", (req, res) => {
+    const sql = "SELECT * FROM petrol_stations;";
 
-    const sql = "SELECT * FROM petrol_stations"; // talk to the group what they think about what is the best sql filtering for this endpoint
-
-    db.query(sql).then(dbRes => res.json(dbRes.rows));
-});
+    db.query(sql)
+        .then(dbRes => res.json(dbRes.rows[_.random(0, dbRes.rows.length - 1)]))
+})
 
 
 router.get('/bounds', (req, res) => {
