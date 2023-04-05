@@ -116,3 +116,9 @@ tr:nth-child(even){
     padding: 5px;
     height: 3em;
 }
+.hotkey-sidebar {
+    display: none;
+}
+.hotkey-body {
+    display: block;
+}

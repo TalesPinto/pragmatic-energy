@@ -2,7 +2,8 @@
 
 const parentTag = document.querySelector('.spotlight-section main');
 const refresh = document.querySelector('.refresh')
-// const spotlightStation = document.querySelector('.spotlight-station')
+const spotlightStation = document.querySelector('.spotlight-station')
+
 axios.get('/api/stations/random')
     .then(res => {
 
@@ -24,7 +25,7 @@ function renderStation(station) {
 
     return `
             <div>
-                <p class="spotlight-station"><a href="">${station.name}</a></p>
+                <p class="spotlight-station" id="${station.name}"><a href="">${station.name}</a></p>
                 <p>${station.address}</p>
             </div>
             <img src='${icons[station.owner] || icons.Generic}' alt="">
@@ -46,6 +47,13 @@ function handleRefresh(event) {
 
             parentTag.innerHTML = renderStation(randomStationObj)
         });
+}
 
+spotlightStation.addEventListener('click', handleSpotlight)
+
+function handleSpotlight(event) {
+    event.preventDefault();
+    console.log(event.target);
+    // google.maps.event.trigger(markers[title], 'click');
 }
 
