@@ -109,8 +109,8 @@ async function initMap() {
             };
         });
         
+        // Proximity stations data fetch:
         // When idle, send a request to the api/stations/nearest
-        // Provide latitude, longitude, radius
         const centerLat = map.getCenter().lat();
         const centerLng = map.getCenter().lng();
         
@@ -121,9 +121,7 @@ async function initMap() {
 
         // Send a GET request, providing this query string
         const proximityQueryString = `?lat=${centerLat}&lng=${centerLng}&radius=${radius}`;
-        axios.get(`/api/stations/nearest${proximityQueryString}`)
-            .then(stations => console.log(stations.data))
-        ;
+        axios.get(`/api/stations/nearest${proximityQueryString}`);
 
 
     })
