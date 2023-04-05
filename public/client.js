@@ -26,10 +26,10 @@ async function initMap() {
         let userLat = position.coords.latitude;
         let userLng = position.coords.longitude;
         map.setCenter({ lat: userLat, lng: userLng });
-        
+
         centerLat.innerHTML = 'lat: ' + map.getCenter().lat()
         centerLng.innerHTML = 'lng: ' + map.getCenter().lng()
-    } 
+    }
     function error(err) {
         // User denied geolocation prompt - default to Chicago
         map.setCenter({ lat: -37.9338, lng: 145.0726 });
@@ -43,7 +43,7 @@ async function initMap() {
         let center = map.getCenter();
         let latitude = center.lat();
         let longitude = center.lng();
-        
+
         centerLat.innerHTML = 'lat: ' + latitude
         centerLng.innerHTML = 'lng: ' + longitude
     });
@@ -63,16 +63,16 @@ async function initMap() {
         axios.get(`/api/stations/bounds${queryString}`).then(stations => {
 
             for (const station of stations.data) {
-    
+
                 const myLatLng = { lat: station.latitude, lng: station.longitude };
-                
+
                 const image = {
                     url: icons[station.owner] || icons.Generic,
                     scaledSize: new google.maps.Size(25, 25),
-                    origin: new google.maps.Point(0,0), // origin
+                    origin: new google.maps.Point(0, 0), // origin
                     anchor: new google.maps.Point(0, 0) // anchor
                 };
-    
+
                 const marker = new google.maps.Marker({
                     position: myLatLng,
                     map,
@@ -80,18 +80,18 @@ async function initMap() {
                     // label: station.name,
                     icon: image
                 });
-    
+
                 const contentString = `<div><h3>${station.name}</h3> <p>${station.address}</p></div>`
-    
+
                 marker.addListener("click", () => {
                     infoWindow.close()
                     infoWindow.setContent(contentString)
                     infoWindow.open({
-                      anchor: marker,
-                      map,
-                    });  
+                        anchor: marker,
+                        map,
+                    });
                 });
-    
+
                 marker.addListener("mouseover", () => {
                     marker.label = station.name
                 })
