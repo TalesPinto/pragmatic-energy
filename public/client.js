@@ -1,5 +1,3 @@
-//import {renderStationList} from "./components/nearest_list.js"
-
 const icons = {
     Ampol: "/images/ampol.jpeg",
     BP: "/images/bp.png",
