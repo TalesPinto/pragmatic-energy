@@ -1,5 +1,5 @@
 const parentTable = document.querySelector('table')
-const stats = document.querySelector('.stats')
+const stats = document.querySelector('.stats div')
 
 
 axios.get('/api/stats')
@@ -36,11 +36,3 @@ function renderTotal(totals){
     <h3> Total owners: ${totals[1].rows[0]["count"]} </h3>
     `
 }
-
-
-
-
-
-
-
-
