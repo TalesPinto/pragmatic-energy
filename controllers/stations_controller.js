@@ -42,10 +42,10 @@ router.get('/nearest', (req, res) => {
         .then(stations => {
            
             stations.rows.forEach(station => {
-                station.distance = Math.sqrt( Math.pow((station.latitude - centerLat),2) + Math.pow((station.longitude - centerLng),2) );
+                station.distance = Math.floor(Math.sqrt( Math.pow((station.latitude - centerLat),2) + Math.pow((station.longitude - centerLng),2)*111139*1000));
             })
 
-            res.json(stations.rows.sort( (a,b) => a['distance'] - b['distance']))
+            res.json(stations.rows.sort( (a,b) => a['distance'] - b['distance']).slice(0,10))
         })
     ;
 

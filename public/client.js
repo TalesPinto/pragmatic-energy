@@ -7,9 +7,9 @@ const icons = {
     Generic: "/images/generic.jpg",
 }
 
-let map;
 
 async function initMap() {
+    let map;
     const centerLat = document.getElementById('center-lat')
     const centerLng = document.getElementById('center-lng')
     //@ts-ignore
@@ -121,11 +121,48 @@ async function initMap() {
 
         // Send a GET request, providing this query string
         const proximityQueryString = `?lat=${centerLat}&lng=${centerLng}&radius=${radius}`;
-        axios.get(`/api/stations/nearest${proximityQueryString}`);
+        axios.get(`/api/stations/nearest${proximityQueryString}`)
+        .then( res => renderStationList(res.data));
 
 
     })
 }
+
+//==============================================================================
+// Pragmatic solution
+//==============================================================================
+
+const parentList = document.querySelector('.nearest-section ul');
+
+function renderStationList(stations) {
+    parentList.innerHTML = stations
+        .map(station => renderStation(station))
+        .join('')
+        ;
+}
+
+function renderStation(station) {
+
+    const icons = {
+        Ampol: "/images/ampol.jpeg",
+        BP: "/images/bp.png",
+        Caltex: "/images/caltex.png",
+        Shell: "/images/shell.png",
+        '7-Eleven Pty Ltd': "/images/seven-eleven.png",
+        Generic: "/images/generic.jpg",
+    }
+
+    return `
+                    <li>
+                        <img src='${icons[station.owner] || icons.Generic}' alt="">
+                        <div>
+                            <div><p>${station.name} <b>${station.distance}m</b></p></div>
+                            <p>${station.address}</p>
+                        </div>
+                    </li> 
+    `
+}
+//==============================================================================
 
 initMap();
 
