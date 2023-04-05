@@ -10,25 +10,42 @@ const icons = {
 let map;
 
 async function initMap() {
+    const centerLat = document.getElementById('center-lat')
+    const centerLng = document.getElementById('center-lng')
     //@ts-ignore
     const { Map } = await google.maps.importLibrary("maps");
 
     map = new Map(document.getElementById("map"), {
-        center: { lat: -37.9338, lng: 145.0726 },
+        // center: { lat: -37.9338, lng: 145.0726 },
         zoom: 13,
         minZoom: 10,
     });
 
-    document.getElementById('center-lat').innerHTML = 'lat: ' + map.getCenter().lat()
-    document.getElementById('center-lng').innerHTML = 'lng: ' + map.getCenter().lng()
+    function success(position) {
+        // Center on user's current location if geolocation prompt allowed
+        let userLat = position.coords.latitude;
+        let userLng = position.coords.longitude;
+        map.setCenter({ lat: userLat, lng: userLng });
+        
+        centerLat.innerHTML = 'lat: ' + map.getCenter().lat()
+        centerLng.innerHTML = 'lng: ' + map.getCenter().lng()
+    } 
+    function error(err) {
+        // User denied geolocation prompt - default to Chicago
+        map.setCenter({ lat: -37.9338, lng: 145.0726 });
+        centerLat.innerHTML = 'lat: ' + '-37.9338'
+        centerLng.innerHTML = 'lng: ' + '145.0726'
+    }
+    navigator.geolocation.getCurrentPosition(success, error)
+
 
     map.addListener("center_changed", () => {
         let center = map.getCenter();
         let latitude = center.lat();
         let longitude = center.lng();
         
-        document.getElementById('center-lat').innerHTML = 'lat: ' + latitude
-        document.getElementById('center-lng').innerHTML = 'lng: ' + longitude
+        centerLat.innerHTML = 'lat: ' + latitude
+        centerLng.innerHTML = 'lng: ' + longitude
     });
 
     const infoWindow = new google.maps.InfoWindow({
@@ -92,10 +109,7 @@ async function initMap() {
         });
 
     })
-    
-
 }
-
 
 initMap();
 
