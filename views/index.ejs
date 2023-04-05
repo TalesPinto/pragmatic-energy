@@ -6,8 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/style.css">
+
     <script src="/client.js"></script>
     <script src="/hotkey.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vidaloka&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -52,6 +57,7 @@
             <h2>Map center location</h2>
             <p id="center-lat"></p>
             <p id="center-lng"></p>
+            <h3></h3>
         </section>
 
         <section class="nearest-section">
@@ -61,7 +67,17 @@
             </ul>
 
         </section>
+
+        <section class="random-quote">
+            <h2>Pragmatic Inspiration</h2>
+            <div>
+                <h3 class="quote"></h3>
+                <p class="author"></p>
+            </div>
+        </section>
     </section>
+
+    <script src="/client.js"></script>
 
     <script async
     src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&callback=initMap">
@@ -72,6 +88,7 @@
     <script type="module" src="/components/latest_prices.js"></script>
     <script type="module" src="/components/spotlight.js"></script>
     <script type="module" src="/components/stats.js"></script>
+    <script type="module" src="/components/quote_generator.js"></script>
 
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
     <script src="https://unpkg.com/underscore@1.13.6/underscore-umd-min.js"></script>

@@ -85,6 +85,11 @@ tr:nth-child(even){
     list-style: none;
 }
 
+.right-sidebar {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
 .clock{
     display: flex;
     justify-content: center;
@@ -96,8 +101,11 @@ tr:nth-child(even){
     height: 10em;
     border-bottom: 2px solid black;
 }
-.map-center-location h2, p{
+.map-center-location h2, p, h3{
     padding: 5px;
+}
+.nearest-section{
+    border-bottom: 2px solid black;
 }
 .nearest-section h2{
     /* border-bottom: 1px solid black; */
@@ -121,4 +129,27 @@ tr:nth-child(even){
 }
 .hotkey-body {
     display: block;
+}
+.random-quote{
+    flex: 1 0 auto;
+    position: relative;
+}
+.random-quote h2{
+    padding: 10px 5px;
+}
+.random-quote div{
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+}
+.random-quote .quote {
+    font-family: 'Vidaloka', serif;
+    font-weight: normal;
+    font-style: italic;
+}
+.random-quote .author{
+    font-family: 'Vidaloka', serif;
+    font-weight: bold;
 }

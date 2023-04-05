@@ -32,7 +32,7 @@ function renderTotalStats(totals){
 
 function renderTotal(totals){
     return `
-    <h3> Total stations: ${totals[0].rows[0]["count"]} </h3>
-    <h3> Total owners: ${totals[1].rows[0]["count"]} </h3>
+    <h3> Total stations: ${totals[1].rows[0]["count"]} </h3>
+    <h3> Total owners: ${totals[0].rows[0]["count"]} </h3>
     `
 }
