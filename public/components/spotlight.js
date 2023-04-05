@@ -37,7 +37,6 @@ refresh.addEventListener('click', handleRefresh)
 function handleRefresh(event) {
     event.preventDefault()
     if(!event.target.classList.contains('refresh')) return
-    console.log(event.target.classList);
     axios.get('/api/stations/random')
         .then(res => {
 
@@ -53,7 +52,6 @@ spotlightStation.addEventListener('click', handleSpotlight)
 
 function handleSpotlight(event) {
     event.preventDefault();
-    console.log(event.target);
     // google.maps.event.trigger(markers[title], 'click');
 }
 

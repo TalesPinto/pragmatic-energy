@@ -57,7 +57,6 @@ async function initMap() {
 
     map.addListener('idle', () => {
         // When the map is idle, the map box's boundaries are extracted
-        console.log(map.getBounds())
         const { lo: lowerLat, hi: upperLat } = map.getBounds().Wa;
         const { lo: lowerLng, hi: upperLng } = map.getBounds().Ga;
 
