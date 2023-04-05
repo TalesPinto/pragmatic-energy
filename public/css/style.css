@@ -96,7 +96,7 @@ tr:nth-child(even){
     height: 10em;
     border-bottom: 2px solid black;
 }
-.map-center-location h2, p{
+.map-center-location h2, p, h3{
     padding: 5px;
 }
 .nearest-section h2{

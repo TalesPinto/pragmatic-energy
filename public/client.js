@@ -27,8 +27,8 @@ async function initMap() {
         let userLng = position.coords.longitude;
         map.setCenter({ lat: userLat, lng: userLng });
 
-        centerLat.innerHTML = 'lat: ' + map.getCenter().lat()
-        centerLng.innerHTML = 'lng: ' + map.getCenter().lng()
+        centerLat.innerHTML = 'lat: ' + map.getCenter().lat().toFixed(2)
+        centerLng.innerHTML = 'lng: ' + map.getCenter().lng().toFixed(2)
     }
     function error(err) {
         // User denied geolocation prompt - default to Chicago
@@ -41,8 +41,8 @@ async function initMap() {
 
     map.addListener("center_changed", () => {
         let center = map.getCenter();
-        let latitude = center.lat();
-        let longitude = center.lng();
+        let latitude = center.lat().toFixed(2);
+        let longitude = center.lng().toFixed(2);
 
         centerLat.innerHTML = 'lat: ' + latitude
         centerLng.innerHTML = 'lng: ' + longitude
@@ -52,6 +52,8 @@ async function initMap() {
         // content: contentString,
         // ariaLabel: station.name,
     });
+
+    const geocoder = new google.maps.Geocoder();
 
     map.addListener('idle', () => {
         // When the map is idle, the map box's boundaries are extracted
@@ -111,8 +113,8 @@ async function initMap() {
         
         // Proximity stations data fetch:
         // When idle, send a request to the api/stations/nearest
-        const centerLat = map.getCenter().lat();
-        const centerLng = map.getCenter().lng();
+        const centerLatCoordinate = map.getCenter().lat();
+        const centerLngCoordinate = map.getCenter().lng();
         
         // Radius: selected based on smaller of the two (vertical/horizontal)
         const latRadius = (upperLat - lowerLat) / 2;
@@ -120,10 +122,27 @@ async function initMap() {
         const radius = Math.min(latRadius, lngRadius)
 
         // Send a GET request, providing this query string
-        const proximityQueryString = `?lat=${centerLat}&lng=${centerLng}&radius=${radius}`;
+        const proximityQueryString = `?lat=${centerLatCoordinate}&lng=${centerLngCoordinate}&radius=${radius}`;
         axios.get(`/api/stations/nearest${proximityQueryString}`)
         .then( res => renderStationList(res.data));
 
+
+
+        // Reverse geocode and display address
+        const h3Address = document.querySelector('.map-center-location h3');
+        const latlng = {
+            lat: centerLatCoordinate,
+            lng: centerLngCoordinate
+        }
+        
+        geocoder
+            .geocode({ location: latlng })
+            .then((response) => {
+                if (response.results[0]) {
+                    // In here, we want to...
+                    h3Address.textContent = response.results[0].formatted_address.split(',', 2);
+                }
+            })
 
     })
 }
