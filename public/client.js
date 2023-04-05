@@ -59,8 +59,9 @@ async function initMap() {
         const { lo: lowerLng, hi: upperLng } = map.getBounds().Ga;
 
         // An API axios request is made to retrieve the stations within the coordinate boundaries set by the map box
-        const queryString = `?lowerlat=${lowerLat}&upperlat=${upperLat}&lowerlng=${lowerLng}&upperlng=${upperLng}`
-        axios.get(`/api/stations/bounds${queryString}`).then(stations => {
+        const boundsQueryString = `?lowerlat=${lowerLat}&upperlat=${upperLat}&lowerlng=${lowerLng}&upperlng=${upperLng}`
+        
+        axios.get(`/api/stations/bounds${boundsQueryString}`).then(stations => {
 
             for (const station of stations.data) {
 
@@ -107,6 +108,23 @@ async function initMap() {
                 // });
             };
         });
+        
+        // When idle, send a request to the api/stations/nearest
+        // Provide latitude, longitude, radius
+        const centerLat = map.getCenter().lat();
+        const centerLng = map.getCenter().lng();
+        
+        // Radius: selected based on smaller of the two (vertical/horizontal)
+        const latRadius = (upperLat - lowerLat) / 2;
+        const lngRadius = (upperLng - lowerLng) / 2;
+        const radius = Math.min(latRadius, lngRadius)
+
+        // Send a GET request, providing this query string
+        const proximityQueryString = `?lat=${centerLat}&lng=${centerLng}&radius=${radius}`;
+        axios.get(`/api/stations/nearest${proximityQueryString}`)
+            .then(stations => console.log(stations.data))
+        ;
+
 
     })
 }
