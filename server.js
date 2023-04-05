@@ -4,6 +4,7 @@ const config = require('./config');
 const stationsController = require("./controllers/stations_controller")
 const ownersController = require("./controllers/owners_controller")
 const latestPricesController = require("./controllers/latest_prices_controller")
+const Quote = require("./models/quotes")
 const db = require('./db')
 
 
@@ -36,6 +37,10 @@ app.get('/api/stats/total', (req, res) => {
         .then(promises => {
             res.json(promises)})
            
+})
+
+app.get('/api/quote/random', (req, res) => {
+    res.json(new Quote)
 })
 
 app.get('/', (req, res) => {
