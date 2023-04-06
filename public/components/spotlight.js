@@ -36,15 +36,11 @@ refresh.addEventListener('click', handleRefresh)
 
 function handleRefresh(event) {
     event.preventDefault()
-    if(!event.target.classList.contains('refresh')) return
+    if (!event.target.classList.contains('refresh')) return
     axios.get('/api/stations/random')
         .then(res => {
-
-            const allStations = res.data
-            const randomStationNumber = _.random(0, allStations.length - 1)
-            const randomStationObj = res.data[randomStationNumber]
-
-            parentTag.innerHTML = renderStation(randomStationObj)
+            const spotlight = res.data
+            parentTag.innerHTML = renderStation(spotlight)
         });
 }
 

@@ -54,16 +54,25 @@ async function initMap() {
     });
 
     const geocoder = new google.maps.Geocoder();
+    let markers = []; // empty array
 
     map.addListener('idle', () => {
         // When the map is idle, the map box's boundaries are extracted
         const { lo: lowerLat, hi: upperLat } = map.getBounds().Wa;
         const { lo: lowerLng, hi: upperLng } = map.getBounds().Ga;
 
+
         // An API axios request is made to retrieve the stations within the coordinate boundaries set by the map box
         const boundsQueryString = `?lowerlat=${lowerLat}&upperlat=${upperLat}&lowerlng=${lowerLng}&upperlng=${upperLng}`
-        
+
+        markers.forEach(marker => {
+            marker.setMap(null)
+            marker = null
+        })
+
         axios.get(`/api/stations/bounds${boundsQueryString}`).then(stations => {
+
+
 
             for (const station of stations.data) {
 
@@ -84,6 +93,9 @@ async function initMap() {
                     icon: image
                 });
 
+                markers.push(marker); // add the marker to the array
+                marker.setMap(map);
+
                 const contentString = `<div><h3>${station.name}</h3> <p>${station.address}</p></div>`
 
                 marker.addListener("click", () => {
@@ -98,24 +110,14 @@ async function initMap() {
                 marker.addListener("mouseover", () => {
                     marker.label = station.name
                 })
-                // marker.addListener('mouseover', function() {
-                //     infoWindow.setContent(`<h3>${station.name}</h3>`)
-                //     infoWindow.open({
-                //       anchor: marker,
-                //       map,
-                //     }); 
-                // });
-                // marker.addListener('mouseout', function() {
-                //     infoWindow.close();
-                // });
             };
         });
-        
+
         // Proximity stations data fetch:
         // When idle, send a request to the api/stations/nearest
         const centerLatCoordinate = map.getCenter().lat();
         const centerLngCoordinate = map.getCenter().lng();
-        
+
         // Radius: selected based on smaller of the two (vertical/horizontal)
         const latRadius = (upperLat - lowerLat) / 2;
         const lngRadius = (upperLng - lowerLng) / 2;
@@ -124,7 +126,7 @@ async function initMap() {
         // Send a GET request, providing this query string
         const proximityQueryString = `?lat=${centerLatCoordinate}&lng=${centerLngCoordinate}&radius=${radius}`;
         axios.get(`/api/stations/nearest${proximityQueryString}`)
-        .then( res => renderStationList(res.data));
+            .then(res => renderStationList(res.data));
 
 
 
@@ -134,7 +136,7 @@ async function initMap() {
             lat: centerLatCoordinate,
             lng: centerLngCoordinate
         }
-        
+
         geocoder
             .geocode({ location: latlng })
             .then((response) => {
