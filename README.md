@@ -25,7 +25,7 @@ The Pragamtic Programmers team:
  - Embedded Google Maps
  - Displays a marker at all petrol station locations
  - Markers can be clicked for additional information
- 
+![alt text](https://i.imgur.com/P8oKq5c.png) ![alt text](https://i.imgur.com/qXPcXZG.png)
 
 ## Full window mode
  - The display can be toggled with the hotkey (Ctrl + B)
