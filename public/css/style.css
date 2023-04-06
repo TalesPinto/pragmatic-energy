@@ -1,87 +1,109 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     /* border: 1px solid red; */
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
-html{
+html {
     height: 100%;
 }
 
-body{
+body {
+    background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
     display: grid;
     grid-template-columns: 1fr 2.5fr 1fr;
     height: 100%;
 }
 
-#map{
+#map {
     height: 100%;
     border-left: 2px solid black;
     border-right: 2px solid black;
 }
 
-.spotlight-section{
-    height: 8em;
+.spotlight-section {
+    height: fit-content;
     border-bottom: 2px solid black;
     padding: 10px 10px 10px 5px;
 }
-.spotlight-section header{
+
+.spotlight-section header {
     display: flex;
     justify-content: space-between;
     padding: 10px 10px 10px 5px;
 }
-.spotlight-section main{
+
+.spotlight-section main {
     display: flex;
     justify-content: space-between;
+    padding: 10px 10px 10px 5px;
 }
-.spotlight-section main img{
+
+.spotlight-section main img {
     height: 3em;
 }
-.stats{
-    height: 22em;
+
+.stats {
+    height: fit-content;
     border-bottom: 2px solid black;
-    padding: 0px 5px;
+    padding: 10px 5px;
 }
+
 .stats h2 {
     margin-top: 10px;
+    padding-bottom: 10px;
 }
-table{
+
+table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-bottom: 5px;
 }
-tr{
-    border-top: 1px solid black;
+
+tr {
+    /* border-top: 1px solid black; */
 }
-td{
+
+td {
     /* border: 1px solid #dddddd; */
     text-align: left;
     padding: 8px;
 }
-.station-count{
+
+.station-count {
     text-align: right;
 }
-tr:nth-child(even){
-    background-color: #dddddd;
+
+tr:nth-child(odd) {
+    background-color: white;
 }
-.latest-prices{
-    height: 12em;
+
+.latest-prices {
+    height: fit-content;
     border-bottom: 2px solid black;
     padding-left: 5px;
+}
+
+.latest-prices h2 {
+    height: fit-content;
     padding-top: 10px;
 }
-.about{
+
+.about {
     padding-left: 5px;
 }
-.about h2, h3{
+
+.about h2,
+h3 {
     padding-top: 10px;
 }
-.about ul{
-    padding: 15px 5px;
+
+.about ul {
+    padding: 10px 5px;
     list-style: none;
 }
 
@@ -90,66 +112,96 @@ tr:nth-child(even){
     flex-flow: column;
     height: 100%;
 }
-.clock{
+
+.clock {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 4em;
+    height: fit-content;
     border-bottom: 2px solid black;
+    padding-top: 10px;
 }
-.map-center-location{
-    height: 10em;
+
+.map-center-location {
+    height: fit-content;
     border-bottom: 2px solid black;
+    padding-top: 10px;
 }
-.map-center-location h2, p, h3{
+
+.map-center-location h2,
+p,
+h3 {
     padding: 5px;
 }
-.nearest-section{
+
+.map-center-location h3 {
+    font-size: 15px;
+}
+
+.map-center-location div {
+    display: flex;
+    /* justify-content: space-around; */
+}
+
+.nearest-section {
     border-bottom: 2px solid black;
+    padding-top: 10px;
 }
-.nearest-section h2{
+
+.nearest-section h2 {
     /* border-bottom: 1px solid black; */
-    padding: 10px 5px;
+    padding: 0 5px;
 }
-.nearest-section li{
-    border-top: 1px solid black;
+
+.nearest-section li {
+    /* border-top: 1px solid black; */
     display: flex;
     align-items: center;
     padding-left: 5px;
 }
-.nearest-section li:nth-child(even){
-    background-color: #dddddd;
+
+.nearest-section li:nth-child(even) {
+    background-color: white;
 }
-.nearest-section li img{
+
+.nearest-section li img {
     padding: 5px;
     height: 3em;
 }
+
 .hotkey-sidebar {
     display: none;
 }
+
 .hotkey-body {
     display: block;
 }
-.random-quote{
+
+.random-quote {
     flex: 1 0 auto;
     position: relative;
 }
-.random-quote h2{
-    padding: 10px 5px;
+
+.random-quote h2 {
+    padding: 10px 5px 10px 5px;
 }
-.random-quote div{
+
+.random-quote div {
     width: 80%;
     position: absolute;
     top: 50%;
     right: 50%;
     transform: translate(50%, -50%);
 }
+
 .random-quote .quote {
     font-family: 'Vidaloka', serif;
+    font-size: medium;
     font-weight: normal;
     font-style: italic;
 }
-.random-quote .author{
+
+.random-quote .author {
     font-family: 'Vidaloka', serif;
     font-weight: bold;
 }

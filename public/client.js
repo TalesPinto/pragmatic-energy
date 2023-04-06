@@ -27,14 +27,14 @@ async function initMap() {
         let userLng = position.coords.longitude;
         map.setCenter({ lat: userLat, lng: userLng });
 
-        centerLat.innerHTML = 'lat: ' + map.getCenter().lat().toFixed(2)
-        centerLng.innerHTML = 'lng: ' + map.getCenter().lng().toFixed(2)
+        centerLat.innerHTML = 'Lat: ' + map.getCenter().lat().toFixed(2)
+        centerLng.innerHTML = 'Lng: ' + map.getCenter().lng().toFixed(2)
     }
     function error(err) {
         // User denied geolocation prompt - default to Chicago
         map.setCenter({ lat: -37.9338, lng: 145.0726 });
-        centerLat.innerHTML = 'lat: ' + '-37.9338'
-        centerLng.innerHTML = 'lng: ' + '145.0726'
+        centerLat.innerHTML = 'Lat: ' + '-37.9338'
+        centerLng.innerHTML = 'Lng: ' + '145.0726'
     }
     navigator.geolocation.getCurrentPosition(success, error)
 
@@ -44,8 +44,8 @@ async function initMap() {
         let latitude = center.lat().toFixed(2);
         let longitude = center.lng().toFixed(2);
 
-        centerLat.innerHTML = 'lat: ' + latitude
-        centerLng.innerHTML = 'lng: ' + longitude
+        centerLat.innerHTML = 'Lat: ' + latitude
+        centerLng.innerHTML = 'Lng: ' + longitude
     });
 
     const infoWindow = new google.maps.InfoWindow({
