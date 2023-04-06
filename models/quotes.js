@@ -13,8 +13,7 @@ const quoteList = [
 class Quote {
     
     constructor(quote, author) {
-        this.quote = _.sample(quoteList)[0];
-        this.author = _.sample(quoteList)[1];
+        [this.quote, this.author] = _.sample(quoteList)
     }
 
 }
