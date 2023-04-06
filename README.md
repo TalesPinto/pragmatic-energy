@@ -25,10 +25,11 @@ The Pragamtic Programmers team:
  - Embedded Google Maps
  - Displays a marker at all petrol station locations
  - Markers can be clicked for additional information
-![alt text](https://i.imgur.com/P8oKq5c.png) ![alt text](https://i.imgur.com/qXPcXZG.png)
+ ![alt text](https://i.imgur.com/qXPcXZG.png)
 
 ## Full window mode
  - The display can be toggled with the hotkey (Ctrl + B)
+![alt text](https://i.imgur.com/P8oKq5c.png)
 
 ## Spotlight
  - A randomly selected station from anywhere in Australia
@@ -41,6 +42,7 @@ The Pragamtic Programmers team:
 
 ## Latest Prices
  - A display of the latest Oil prices, accessed via the [Commodities-API](https://commodities-api.com/)
+ ![alt text](https://i.imgur.com/ioRJa1C.png)
 
 ## Map Center location
  - A display of the center's latitude and longitude coordinates, and the corresponding address
@@ -51,4 +53,4 @@ The Pragamtic Programmers team:
 
 ## Pragmatic Inspiration
  - A randomly generated quote to lift one's spirits
-
+![alt text](https://i.imgur.com/3dbvlKJ.png)
