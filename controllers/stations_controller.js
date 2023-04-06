@@ -48,5 +48,13 @@ router.get('/nearest', (req, res) => {
 
 })
 
+router.get("/:name", (req, res) => {
+
+    const sql = "SELECT * FROM petrol_stations WHERE name = $1;";
+
+    db.query(sql, [req.params.name])
+        .then(dbRes => res.json(dbRes.rows[0]))
+        ;
+})
 
 module.exports = router;

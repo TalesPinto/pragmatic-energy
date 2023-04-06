@@ -7,9 +7,9 @@ const icons = {
     Generic: "/images/generic.jpg",
 }
 
-
+let map;
 async function initMap() {
-    let map;
+
     const centerLat = document.getElementById('center-lat')
     const centerLng = document.getElementById('center-lng')
     //@ts-ignore
@@ -163,15 +163,6 @@ function renderStationList(stations) {
 }
 
 function renderStation(station) {
-
-    const icons = {
-        Ampol: "/images/ampol.jpeg",
-        BP: "/images/bp.png",
-        Caltex: "/images/caltex.png",
-        Shell: "/images/shell.png",
-        '7-Eleven Pty Ltd': "/images/seven-eleven.png",
-        Generic: "/images/generic.jpg",
-    }
 
     return `
                     <li>
