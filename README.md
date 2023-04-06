@@ -13,7 +13,7 @@ The Pragamtic Programmers team:
 - [Tales](https://github.com/TalesPinto)
 - [Tom](https://github.com/BigBBazz)
 
-
+![alt text](https://i.imgur.com/qUHCkJx.png)
 # Key Technologies
 - HTML, CSS, JavaScript (NodeJS and ExpressJS)
 - PostgreSQL
@@ -25,6 +25,7 @@ The Pragamtic Programmers team:
  - Embedded Google Maps
  - Displays a marker at all petrol station locations
  - Markers can be clicked for additional information
+ 
 
 ## Full window mode
  - The display can be toggled with the hotkey (Ctrl + B)
