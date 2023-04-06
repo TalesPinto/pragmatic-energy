@@ -39,6 +39,18 @@ app.get('/api/stats/total', (req, res) => {
            
 })
 
+app.get('/api/stats/all', (req, res) => {
+    const sql = 'SELECT owner, count(owner) FROM petrol_stations GROUP BY owner ORDER BY count desc;'
+
+    db.query(sql)
+        .then(dbRes => {
+            let owners = dbRes.rows.filter(owner => owner.count > 1)
+            let total_owners = dbRes.rows.length
+            let total_stations = dbRes.rows.map(owner => owner.count).reduce((acc, count) => acc + Number(count), 0)
+            res.json({owners, total_owners, total_stations})
+        })
+})
+
 app.get('/api/quote/random', (req, res) => {
     res.json(new Quote)
 })
