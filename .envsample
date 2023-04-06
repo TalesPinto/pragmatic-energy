@@ -1,0 +1,4 @@
+PORT=####
+DATABASE_URL="postgresql://<psql-username>:<psql-password>@localhost:5432/pragmatic_energy_api"
+GOOGLE_API_KEY=""
+COMMODITIES_API_KEY=""
