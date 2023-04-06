@@ -153,3 +153,79 @@ tr:nth-child(even){
     font-family: 'Vidaloka', serif;
     font-weight: bold;
 }
+
+.chart {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+    height: 230px;
+    gap: 3px;
+    margin-top: 10px;
+}
+
+.bar {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    width: var(--bar-ratio, 0%);
+    height: 50%;
+    background-color:aqua;
+    color: black;
+    justify-content: end;
+    align-items: center;
+    transition: all 300ms ease;
+}
+
+.bar img {
+    height: 1.6em;
+    vertical-align: middle;
+    transition: transform 250ms;
+}
+
+.bar:hover img{
+    height: 2em;
+    transform: rotate(360deg);
+}
+
+.section {
+    display: flex;
+    flex-direction: row;
+    margin: 3px;
+    font-weight: bold;
+    align-items: flex-start;
+}
+
+.owner-name {
+    width: 0px;
+    height: 0px;
+    visibility: collapse;
+}
+
+.bar:hover p  {
+    visibility: visible;
+    width:fit-content;
+    height: 20px;
+}
+
+.bar:hover{
+    height: 100%;
+    width: 100%;
+    justify-content: start;
+    background-color: aqua;
+    background-image: linear-gradient(90deg, aqua 0%, #7ffff2 100%);
+}
+
+.bar:hover section{
+    width:100px;
+}
+
+.owner-count{
+    visibility: visible;
+    padding-left: 0px;
+}
+
+
+
+
+

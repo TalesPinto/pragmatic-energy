@@ -1,4 +1,4 @@
-const parentTable = document.querySelector('table')
+const parentTable = document.querySelector('.chart')
 const stats = document.querySelector('.stats div')
 
 
@@ -8,18 +8,32 @@ axios.get('/api/stats')
 })
 
 function renderOwnerStats(owners){
-    parentTable.innerHTML = owners.sort( (a,b) => b["count"] - a["count"]).slice(0,7)
-    .map(owner => renderTotalStations(owner)).join('')
+
+    const maxStations = owners.sort( (a,b) => b["count"] - a["count"]).slice(0,1)[0].count
+
+    parentTable.innerHTML = owners.sort( (a,b) => b["count"] - a["count"]).slice(0,5)
+    .map(owner => renderTotalStations(owner, maxStations)).join('')
 }
 
-function renderTotalStations(owner){   
+function renderTotalStations(owner, maxStations){   
+
+    const icons = {
+        Ampol: "/images/ampol.jpeg",
+        BP: "/images/bp.png",
+        Caltex: "/images/caltex.png",
+        Shell: "/images/shell.png",
+        '7-Eleven Pty Ltd': "/images/seven-eleven.png",
+        Generic: "/images/generic.jpg",
+    }
+
+    const ownerLength = owner.owner.length
     return `
-    <tr>
-         <td>${owner.owner}</td>
-         <td class="station-count">${owner.count}</td>
-    </tr>`     
+    <div class="bar" style="--bar-ratio: ${Math.floor((owner.count/maxStations)
+    *100)}%;">
+        <div class = "section"><img src='${icons[owner.owner] || icons.Generic}'><p class = "owner-name">${owner.owner}:</p> <p class = "owner-count">${owner.count}</p> </div>
+    </div>
+    `     
 }
-
 
 axios.get('/api/stats/total')
     .then(res => {
