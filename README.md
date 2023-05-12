@@ -26,16 +26,13 @@ The Pragamtic Programmers team:
  - Displays a marker at all petrol station locations within view
  - Markers can be clicked for additional information
  - Full window mode: Toggle between the standard display and full window mode with the hotkey Ctrl+B
- <!-- ![alt text](https://i.imgur.com/P8oKq5c.png) -->
-![alt text](https://i.imgur.com/qXPcXZG.png)
-<!-- TODO: replace the above with a gif -->
+![full window mode](https://github.com/Akman13/pragmatic-energy/blob/main/gifs/fullwindowmode.gif)
 
 ## Left Side Pane
 ### Spotlight
  - View a randomly selected petrol station from anywhere around Australia!
  - refresh button: roll a new spotlight station
- <!-- TODO: add a gif of the spotlight feature in use -->
- <!-- gif: Click on the name -> Click refresh -> Click on that one's name -->
+ ![spotlight station feature](https://github.com/Akman13/pragmatic-energy/blob/main/gifs/spotlight-station.gif)
 
 ### Stats
  - A statistical breakdown of all stations around Australia
@@ -43,7 +40,6 @@ The Pragamtic Programmers team:
 
 ### Latest Prices
  - A display of the latest Oil prices, accessed via the [Commodities-API](https://commodities-api.com/)
- ![alt text](https://i.imgur.com/ioRJa1C.png)
 
 ## Right Side Pane
 ### Map Center location
@@ -52,9 +48,8 @@ The Pragamtic Programmers team:
 ### Nearest stations
  - A dynamic list display of the 10 closest stations within view
  - The distance from the map center is displayed for each station
- <!-- TODO: gif of moving the map -->
+ ![dynamic station data](https://github.com/Akman13/pragmatic-energy/blob/main/gifs/dynamic-stations-list.gif)
 
 ### Pragmatic Inspiration
  - A randomly generated quote to lift one's spirits
-![alt text](https://i.imgur.com/3dbvlKJ.png)
-<!-- TODO: Screenshot of just the quote -->
+![pragmatic inspiration quote](https://github.com/Akman13/pragmatic-energy/blob/main/gifs/pragmatic-inspiration.png)
