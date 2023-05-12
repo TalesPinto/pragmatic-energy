@@ -58,8 +58,8 @@ async function initMap() {
 
     map.addListener('idle', () => {
         // When the map is idle, the map box's boundaries are extracted
-        const { lo: lowerLat, hi: upperLat } = map.getBounds().Wa;
-        const { lo: lowerLng, hi: upperLng } = map.getBounds().Ga;
+        const { lo: lowerLat, hi: upperLat } = map.getBounds().Wa || map.getBounds().Ua;
+        const { lo: lowerLng, hi: upperLng } = map.getBounds().Ga || map.getBounds().Ha;
 
 
         // An API axios request is made to retrieve the stations within the coordinate boundaries set by the map box

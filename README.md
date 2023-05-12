@@ -23,35 +23,38 @@ The Pragamtic Programmers team:
 # Features
 ## Map display
  - Embedded Google Maps
- - Displays a marker at all petrol station locations
+ - Displays a marker at all petrol station locations within view
  - Markers can be clicked for additional information
- ![alt text](https://i.imgur.com/P8oKq5c.png)
- 
-
-## Full window mode
- - The display can be toggled with the hotkey (Ctrl + B)
+ - Full window mode: Toggle between the standard display and full window mode with the hotkey Ctrl+B
+ <!-- ![alt text](https://i.imgur.com/P8oKq5c.png) -->
 ![alt text](https://i.imgur.com/qXPcXZG.png)
+<!-- TODO: replace the above with a gif -->
 
-## Spotlight
- - A randomly selected station from anywhere in Australia
- - Its location can be viewed by clicking on its name
- - refresh: A new Spotlight station is selected
+## Left Side Pane
+### Spotlight
+ - View a randomly selected petrol station from anywhere around Australia!
+ - refresh button: roll a new spotlight station
+ <!-- TODO: add a gif of the spotlight feature in use -->
+ <!-- gif: Click on the name -> Click refresh -> Click on that one's name -->
 
-## Stats
+### Stats
  - A statistical breakdown of all stations around Australia
  - Visually represents the ownership of the stations
 
-## Latest Prices
+### Latest Prices
  - A display of the latest Oil prices, accessed via the [Commodities-API](https://commodities-api.com/)
  ![alt text](https://i.imgur.com/ioRJa1C.png)
 
-## Map Center location
+## Right Side Pane
+### Map Center location
  - A display of the center's latitude and longitude coordinates, and the corresponding address
 
-## Nearest stations
- - A list display of the 10 closest stations within view
- - Distance from the map center is displayed for each station
+### Nearest stations
+ - A dynamic list display of the 10 closest stations within view
+ - The distance from the map center is displayed for each station
+ <!-- TODO: gif of moving the map -->
 
-## Pragmatic Inspiration
+### Pragmatic Inspiration
  - A randomly generated quote to lift one's spirits
 ![alt text](https://i.imgur.com/3dbvlKJ.png)
+<!-- TODO: Screenshot of just the quote -->
