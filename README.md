@@ -7,7 +7,7 @@ Pragmatic Energy also utilizes an in-built REST JSON API to allow for communicat
 
 ## Access
 This app is yet to be deployed however can be accessed by manual installation. To do so, you will need:
-- A valid Google Maps API key (can be acquired [here](https://developers.google.com/maps/documentation/javascript/get-api-key)) and a valid Commodities API key (can be acquired [here](https://commodities-api.com/)). Both API keys should be inserted into the .env.sample file
+- A valid Google Maps API key (can be acquired [here](https://developers.google.com/maps/documentation/javascript/get-api-key)) and a valid Yahoo Finance RapidAPI key (can be acquired [here](https://rapidapi.com/apidojo/api/yahoo-finance1)). Both API keys should be inserted into the .env.sample file
 - To install the dependencies listed in the package.json file
 - To populate the database with the stations information. This can be done by running the ```import_stations.js``` file
 
@@ -45,7 +45,7 @@ The Pragmatic Programmers team:
  - Visually represents the ownership of the stations
 
 ### Latest Prices
- - A display of the latest Oil prices, accessed via the [Commodities-API](https://commodities-api.com/)
+ - A display of the latest Oil prices, accessed from [Yahoo Finance](https://finance.yahoo.com/lookup) via [RapidAPI](https://rapidapi.com/hub)
 
 ## Right Side Pane
 ### Map Center location
