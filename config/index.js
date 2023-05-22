@@ -14,5 +14,5 @@ module.exports = {
     connectionString: process.env.DATABASE_URL,
   },
   apiKey: process.env.GOOGLE_API_KEY,
-  apiKeyRapidApi: process.env.X_RAPIDAPI_KEY
+  apiKeyRapidApi: process.env.X_RAPIDAPI_KEY,
 }
